@@ -1,0 +1,68 @@
+{
+  "info": {
+    "name": "App.Api",
+    "_postman_id": "6b9c6b8f-1234-45cd-9999-abcdefabcdef",
+    "description": "Protected endpoints for the App API starter.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:5001"
+    },
+    {
+      "key": "bearerToken",
+      "value": "<paste_access_token_here>"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health (anonymous)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Get Orders (requires scope api.read)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{bearerToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/orders",
+          "host": ["{{baseUrl}}"],
+          "path": ["orders"]
+        }
+      }
+    },
+    {
+      "name": "Admin Rebuild (requires role Api.Admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{bearerToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/admin/rebuild",
+          "host": ["{{baseUrl}}"],
+          "path": ["admin", "rebuild"]
+        }
+      }
+    }
+  ]
+}
